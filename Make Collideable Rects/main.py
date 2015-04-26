@@ -24,18 +24,18 @@ map_rect = map_surface.get_rect()
 
 
 """Create a list of rects called "blockers" that the
-player can collide with. The getObjects() method 
-returns a list of objects in your tile map. Each 
+player can collide with. The getObjects() method
+returns a list of objects in your tile map. Each
 tile has properties like name, type, x, y, width,
 height.  Double click objects in Tiled to see these
-properties.  These properties are used to make rect 
+properties.  These properties are used to make rect
 objects in Pygame."""
 blockers = []
 tilewidth = tile_renderer.tmx_data.tilewidth
-for tile_object in tile_renderer.tmx_data.getObjects():
+for tile_object in tile_renderer.tmx_data.objects:
     properties = tile_object.__dict__
     if properties['name'] == 'blocker':
-        x = properties['x'] 
+        x = properties['x']
         y = properties['y']
         width = properties['width']
         height = properties['height']
@@ -46,8 +46,8 @@ for tile_object in tile_renderer.tmx_data.getObjects():
 """
 The Player class will be a player-controlled sprite
 that will collide with the blockers we just created.
-We pass in the blockers as a constructor argument so 
-that we can assign them as an attribute.  During the 
+We pass in the blockers as a constructor argument so
+that we can assign them as an attribute.  During the
 update method, we can refer to this attribute to detect
 collision.
 """
